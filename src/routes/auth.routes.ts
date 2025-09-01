@@ -1,21 +1,20 @@
 import { Router } from "express";
 import passport from "../config/passport.config.ts";
 import { email } from "zod";
-import { signup, googleAuthCallback } from "controllers/auth.controllers.ts";
+import { signup, googleAuthCallback, login, forgotPassword, logout, verifyCode, renewCode, refreshAccessToken } from "controllers/auth.controllers.ts";
 
 const authRoutes = Router();
-
 authRoutes.post("/signup", signup)
-authRoutes.post("/verifycode",)
-authRoutes.post("/resendcode",)
-authRoutes.post("/refreshtoken",)
-authRoutes.post("login",)
-authRoutes.post("/forgo-password",)
-authRoutes.post("logout",)
+authRoutes.post("/verifycode", verifyCode)
+authRoutes.post("/resendcode", renewCode)
+authRoutes.post("/refreshtoken", refreshAccessToken)
+authRoutes.post("login", login)
+authRoutes.post("/forgot-password", forgotPassword)
+authRoutes.post("logout", logout)
 
 //google OAUTH
-authRoutes.get("/google", passport.authenticate("google",{ scope:["profile", "email"]}))
-authRoutes.get("/google/callback", passport.authenticate("google", {failureRedirect:"/login", session: false}), googleAuthCallback)
+authRoutes.get("/google", passport.authenticate("google", { scope: ["profile", "email"] }))
+authRoutes.get("/google/callback", passport.authenticate("google", { failureRedirect: "/login", session: false }), googleAuthCallback)
 
 
 export default authRoutes;

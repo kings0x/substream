@@ -30,6 +30,7 @@ model Users {
   state                String?
   postal_code          String?
   country              String?
+  role                 String?
   created_at           DateTime         @default(now())
   updated_at           DateTime         @updatedAt
   Subscriptions        Subscriptions[]

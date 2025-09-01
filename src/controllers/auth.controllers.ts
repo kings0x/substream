@@ -295,6 +295,7 @@ export async function verifyCode(req: Request, res: Response) {
 //renew code 
 
 export async function renewCode(req: Request, res: Response){
+
     //the user id is sent back 
     //check wethere the user exists
     //check wether the code timeout 60s has passed
@@ -302,7 +303,8 @@ export async function renewCode(req: Request, res: Response){
     //remove the existing code
     //generate a new code, hash and store
     //change the codeGenerated at timestamp
-    //send the code to the user via email
+    //send the code to the user via email    
+
     try{
         const{userId} = req.body
 
@@ -596,6 +598,23 @@ export async function refreshAccessToken(req: Request, res: Response) {
     
 }
 
+//forgot password
+export async function forgotPassword(req: Request, res: Response) {
+    //check wether email is present
+    //check wether email exists in the database
+    //check wether email is verified
+    //generate a token
+    //save the token to the db
+    //send a mail to the user with a link containing the token as a query param "https://yourfrontend.com/reset-password?token=RAW_TOKEN"
+    //second stage is to reset the password
+    //the user on the client side opens up a panel from the email link and enters his new password
+    //the password is sent to the server as well as the token(extracted from the params of the link) 
+    //the token is checked and if it is valid the password is updated
+    //send success message to the user
+    
+    
+}
+
 
 //google auth 
 export async function googleAuthCallback(req: Request, res: Response) {
@@ -661,4 +680,62 @@ export async function googleAuthCallback(req: Request, res: Response) {
         })
     }
     
+}
+
+export async function logout(req: Request, res: Response) {
+
+    //get the refresh token from cookies
+    //check wether it is present if its not user is already logged out send success message
+    //hash the refresh token
+    //remove the refresh token from the database
+    //remove the refresh token from the cookies
+    //send success message
+
+    try{
+        const refreshToken = req.cookies[REFRESH_COOKIE_NAME];
+        if (!refreshToken){
+            return res.status(200).json({
+                success: true,
+                message: "user is already logged out"
+            })
+        }
+
+        const hashedRefreshToken = hashRefreshToken(refreshToken);
+
+        const user = await prisma.users.findFirst({
+            where:{
+                refresh_token: hashedRefreshToken
+            }
+        })
+
+        if(!user){
+            return res.status(200).json({
+                success: true,
+                message: "user is already logged out"
+            })
+        }
+
+        await prisma.users.update({
+            where:{
+                id: user.id
+            },
+            data:{
+                refresh_token: null
+            }
+        })
+        
+        res.clearCookie(REFRESH_COOKIE_NAME);
+
+        return res.status(200).json({
+            success: true,
+            message: "user logged out successfully"
+        })
+    }
+
+    catch(err){
+        res.status(500).json({
+            success: false,
+            message: `something went wrong`
+        })
+    }
 }
