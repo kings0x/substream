@@ -1,0 +1,242 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+//User /Customer details everything we need for auth and billing
+model Users {
+  id                   String           @id @default(uuid())
+  first_name           String
+  last_name            String
+  email                String           @unique
+  password_hash        String?
+  avatar               String?
+  google_id            String?          @unique
+  code                 String?
+  code_generated_at    DateTime?
+  is_verified          Boolean          @default(false)
+  refresh_token        String?
+  refresh_generated_at DateTime?
+  google_refresh_token String?
+  phone_number         Int?             @unique
+  address_line_1       String?
+  address_line_2       String?
+  city                 String?
+  state                String?
+  postal_code          String?
+  country              String?
+  role                 String?
+  created_at           DateTime         @default(now())
+  updated_at           DateTime         @updatedAt
+  Subscriptions        Subscriptions[]
+  Payments             Payments[]
+  PaymentMethods       PaymentMethods[]
+  Invoices             Invoices[]
+
+  @@unique([code, is_verified])
+}
+
+enum Currency {
+  USD
+  EUR
+  GBP
+  NGN
+}
+
+enum BillingInterval {
+  monthly
+  yearly
+}
+
+//the table to hold the plans the service would offer
+model Plans {
+  id                String          @id @default(uuid())
+  name              String
+  description       String
+  price_cents       Int
+  currency          Currency
+  billing_interval  BillingInterval
+  trial_period_days String?
+  is_active         Boolean         @default(true) //to disable or enable plans in the future
+  created_at        DateTime        @default(now())
+  updated_at        DateTime        @updatedAt
+  Subscriptions     Subscriptions[]
+
+  @@unique([name, billing_interval])
+  @@index([is_active])
+  @@index([billing_interval])
+}
+
+enum SubscriptionStatus {
+  active
+  past_due
+  cancelled
+  trailing
+  expired
+}
+
+//if a user is subscribing to the same plan , we use the same subscription id of the user of that plan we only create a new subscription id if the user changes plans
+model Subscriptions {
+  id             String             @id @default(uuid())
+  user_id        String
+  plan_id        String
+  user           Users              @relation(fields: [user_id], references: [id])
+  plan           Plans              @relation(fields: [plan_id], references: [id])
+  status         SubscriptionStatus
+  start_date     DateTime
+  end_date       DateTime?
+  trial_end_date DateTime?
+  cancel_at      DateTime?
+  canceled_at    DateTime?
+  created_at     DateTime           @default(now())
+  updated_at     DateTime           @updatedAt
+  Payments       Payments[]
+  Invoices       Invoices[]
+
+  @@index([user_id, status])
+  @@index([plan_id, status])
+}
+
+enum PaymentStatus {
+  pending
+  succeeded
+  failed
+  refunded
+}
+
+//if set to recurring the same subscription id is reactivated the same payment method id is used and the same user is recorded as a subscriber
+model Payments {
+  id                    String         @id @default(uuid())
+  user_id               String
+  subscription_id       String?
+  user                  Users          @relation(fields: [user_id], references: [id])
+  subscription          Subscriptions? @relation(fields: [subscription_id], references: [id]) //in a subscription setting for recurring payments we do not activate a new subscription for the plan we just reactivate an existing subscripition id hecne makeing multiple payments point to one subscription
+  amount_cents          Int
+  currency              Currency
+  status                PaymentStatus
+  payment_method_id     String
+  paymentMethod         PaymentMethods @relation(fields: [payment_method_id], references: [id])
+  invoice_id            String
+  invoice               Invoices       @relation(fields: [invoice_id], references: [id]) //a payment pays an invoice so multiple payment retries before leading to success can cause a one to many relationship between invoices and payment
+  transaction_reference String? //get this from stripe
+  paid_at               DateTime?
+  created_at            DateTime       @default(now())
+  updated_at            DateTime       @updatedAt
+  Refunds               Refunds[]
+
+  @@index([user_id])
+  @@index([subscription_id])
+  @@index([payment_method_id])
+  @@index([transaction_reference])
+}
+
+enum PaymentProviders {
+  stripe
+}
+
+enum PaymentType {
+  card
+}
+
+enum CardBrand {
+  visa
+  mastercard
+}
+
+model PaymentMethods {
+  id           String           @id @default(uuid())
+  user_id      String
+  user         Users            @relation(fields: [user_id], references: [id])
+  provider     PaymentProviders
+  type         PaymentType
+  last_digits  Int? //last 4 digits of card
+  expiry_month Int? //month and year the card is expiring
+  expiry_year  Int?
+  brand        CardBrand?
+  Payments     Payments[]
+  created_at   DateTime         @default(now())
+  updated_at   DateTime         @updatedAt
+  Invoices     Invoices[]
+}
+
+enum InvoiceStatus {
+  draft
+  open
+  paid
+  void
+  uncollectible
+}
+
+model Invoices {
+  id                String         @id @default(uuid())
+  user_id           String
+  subscription_id   String
+  payment_method_id String
+  user              Users          @relation(fields: [user_id], references: [id])
+  subscription      Subscriptions  @relation(fields: [subscription_id], references: [id])
+  paymentMethods    PaymentMethods @relation(fields: [payment_method_id], references: [id])
+  amount_due_cents  Int
+  amount_paid_cents Int
+  currency          Currency
+  due_date          DateTime
+  paid_at           DateTime?
+  status            InvoiceStatus
+  invoice_number    String         @unique
+  created_at        DateTime       @default(now())
+  updated_at        DateTime       @updatedAt
+  Payments          Payments[]
+
+  @@index([user_id])
+  @@index([subscription_id])
+  @@index([payment_method_id])
+  @@index([status, due_date])
+  @@index([due_date])
+}
+
+enum RefundStatus {
+  pending
+  succeeded
+  failed
+}
+
+model Refunds {
+  id           String       @id @default(uuid())
+  payment_id   String
+  payments     Payments     @relation(fields: [payment_id], references: [id])
+  amount_cents Int
+  currency     Currency
+  reason       String?
+  status       RefundStatus
+  gateway_ref  String? //refund id from the provider 
+  processed_at DateTime?
+  created_at   DateTime     @default(now())
+  updated_at   DateTime?    @updatedAt
+
+  @@index([payment_id])
+  @@index([gateway_ref])
+}
+
+enum WebhookEventProcessedStatus {
+  pending
+  processed
+  failed
+}
+
+model WebhookEvents {
+  id          String                      @id @default(uuid())
+  provider    PaymentProviders
+  event_type  String
+  event_id    String                      @unique
+  payload     Json
+  processed   WebhookEventProcessedStatus
+  recieved_at DateTime
+  created_at  DateTime                    @default(now())
+  updated_at  DateTime?                   @updatedAt
+
+  @@index([provider, processed])
+}
