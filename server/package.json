@@ -5,7 +5,7 @@
     "build": "ts-node ./scripts/build.ts",
     "clean-install": "rm -rf ./node_modules && rm -r package-lock.json && npm i",
     "dev": "cross-env NODE_ENV=developement ts-node ./src/app.ts",
-    "dev:hot": "nodemon --exec \"npm run dev\" --watch ./src --ext app.ts",
+    "dev:hot": "nodemon src/app.ts",
     "lint": "eslint .",
     "start": "cross-env NODE_ENV=production node -r ./config.js ./dist/app.js",
     "test": " cross-env NODE_ENV=test jest --coverage",

@@ -1,0 +1,26 @@
+
+services:
+  server:
+    build: 
+      context: ./server
+
+    container_name: app-server
+    command: ["npm", "run", "dev:hot"]
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./server/config/.env.developement
+
+    
+  mailworker:
+    build: 
+      context: ./workers/mailworker
+
+    container_name: app-mailworker
+
+    command: ["npm", "run", "dev"]
+
+    env_file:
+      - ./workers/mailworker/config/.env.developement
+
+
