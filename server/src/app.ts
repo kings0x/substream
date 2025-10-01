@@ -8,6 +8,8 @@ import subscription from "./routes/subscription.routes";
 import authMiddleware from "./middleware/auth.middleware";
 import payment from "./routes/payment.routes";
 import paymentWebhook from "./webhooks/payment.webhooks";
+import job from "./cron/emailScheduler";
+
 
 const allowedOrigins = ["http://localhost:3000", "http://localhost:8000", 'http://localhost:3001' ];
 
@@ -44,12 +46,13 @@ app.use("/", paymentWebhook)
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(passport.initialize())
-app.use("/api/v1/subscripiton", authMiddleware, subscription);
+app.use("/api/v1/subscription", authMiddleware, subscription);
 app.use("/api/v1/auth", authRoutes);
-app.use("/api/v1/payments", payment)
+app.use("/api/v1/payments",authMiddleware, payment)
 
 
 
 app.listen(PORT  || "8000", () => {
+    job.start();
     console.log(`Server is running on http://localhost:${PORT}`);
 });

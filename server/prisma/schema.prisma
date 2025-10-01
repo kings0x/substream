@@ -83,22 +83,25 @@ enum SubscriptionStatus {
 
 //if a user is subscribing to the same plan , we use the same subscription id of the user of that plan we only create a new subscription id if the user changes plans
 model Subscriptions {
-  id             String             @id @default(uuid())
-  user_id        String
-  plan_id        String
-  user           Users              @relation(fields: [user_id], references: [id])
-  plan           Plans              @relation(fields: [plan_id], references: [id])
-  status         SubscriptionStatus
-  start_date     DateTime?
-  end_date       DateTime?
-  trial_end_date DateTime?
-  cancel_at      DateTime?
-  canceled_at    DateTime?
-  created_at     DateTime           @default(now())
-  updated_at     DateTime           @updatedAt
-  Payments       Payments[]
-  Invoices       Invoices[]
+  id                String             @id @default(uuid())
+  user_id           String
+  plan_id           String
+  user              Users              @relation(fields: [user_id], references: [id])
+  plan              Plans              @relation(fields: [plan_id], references: [id])
+  status            SubscriptionStatus
+  start_date        DateTime?
+  end_date          DateTime?
+  trial_end_date    DateTime?
+  cancel_at         DateTime?
+  canceled_at       DateTime?
+  billingInterval   String?
+  lastChargeAttempt DateTime?
+  created_at        DateTime           @default(now())
+  updated_at        DateTime           @updatedAt
+  Payments          Payments[]
+  Invoices          Invoices[]
 
+  @@unique([user_id, plan_id])
   @@index([user_id, status])
   @@index([plan_id, status])
 }
@@ -116,13 +119,13 @@ model Payments {
   user_id               String
   subscription_id       String?
   user                  Users             @relation(fields: [user_id], references: [id])
-  subscription          Subscriptions?    @relation(fields: [subscription_id], references: [id]) //in a subscription setting for recurring payments we do not activate a new subscription for the plan we just reactivate an existing subscripition id hecne makeing multiple payments point to one subscription
+  subscription          Subscriptions?    @relation(fields: [subscription_id], references: [id])
   amount_cents          Int
+  amount_cents_paid     Int?
   currency              Currency
   status                PaymentStatus
   payment_method_id     String
   paymentMethod         PaymentMethods    @relation(fields: [payment_method_id], references: [id])
-  //a payment pays an invoice so multiple payment retries before leading to success can cause a one to many relationship between invoices and payment
   transaction_reference String? //get this from stripe
   paid_at               DateTime?
   created_at            DateTime          @default(now())
@@ -155,18 +158,20 @@ enum CardBrand {
 }
 
 model PaymentMethods {
-  id           String           @id @default(uuid())
-  user_id      String
-  user         Users            @relation(fields: [user_id], references: [id])
-  provider     PaymentProviders
-  type         PaymentType
-  last_digits  Int? //last 4 digits of card
-  expiry_month Int? //month and year the card is expiring
-  expiry_year  Int?
-  brand        CardBrand?
-  Payments     Payments[]
-  created_at   DateTime         @default(now())
-  updated_at   DateTime         @updatedAt
+  id                 String           @id @default(uuid())
+  user_id            String
+  user               Users            @relation(fields: [user_id], references: [id])
+  provider           PaymentProviders
+  type               PaymentType
+  last_digits        Int? //last 4 digits of card
+  expiry_month       Int? //month and year the card is expiring
+  expiry_year        Int?
+  authorization_code String?
+  reusable           Boolean          @default(false)
+  brand              CardBrand?
+  Payments           Payments[]
+  created_at         DateTime         @default(now())
+  updated_at         DateTime         @updatedAt
 }
 
 enum InvoiceStatus {
@@ -188,14 +193,19 @@ model Invoices {
   amount_due_cents  Int
   amount_paid_cents Int?
   currency          Currency?
-  due_date          DateTime?
+  due_date          DateTime? // this is when the invoice would expire use a cron to clear out update on creation
   paid_at           DateTime?
+  billingStart      DateTime?
+  billingEnd        DateTime?
   status            InvoiceStatus
   invoice_number    String            @unique
+  invoiceJobId      String            @unique
+  subscriptionJobId String?           @unique
   created_at        DateTime          @default(now())
   updated_at        DateTime          @updatedAt
   payment_invoice   payment_invoice[]
 
+  @@unique([subscription_id, billingStart])
   @@index([user_id])
   @@index([subscription_id])
   @@index([status, due_date])

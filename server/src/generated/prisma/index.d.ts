@@ -5769,10 +5769,12 @@ export namespace Prisma {
 
   export type PaymentsAvgAggregateOutputType = {
     amount_cents: number | null
+    amount_cents_paid: number | null
   }
 
   export type PaymentsSumAggregateOutputType = {
     amount_cents: number | null
+    amount_cents_paid: number | null
   }
 
   export type PaymentsMinAggregateOutputType = {
@@ -5780,6 +5782,7 @@ export namespace Prisma {
     user_id: string | null
     subscription_id: string | null
     amount_cents: number | null
+    amount_cents_paid: number | null
     currency: $Enums.Currency | null
     status: $Enums.PaymentStatus | null
     payment_method_id: string | null
@@ -5794,6 +5797,7 @@ export namespace Prisma {
     user_id: string | null
     subscription_id: string | null
     amount_cents: number | null
+    amount_cents_paid: number | null
     currency: $Enums.Currency | null
     status: $Enums.PaymentStatus | null
     payment_method_id: string | null
@@ -5808,6 +5812,7 @@ export namespace Prisma {
     user_id: number
     subscription_id: number
     amount_cents: number
+    amount_cents_paid: number
     currency: number
     status: number
     payment_method_id: number
@@ -5821,10 +5826,12 @@ export namespace Prisma {
 
   export type PaymentsAvgAggregateInputType = {
     amount_cents?: true
+    amount_cents_paid?: true
   }
 
   export type PaymentsSumAggregateInputType = {
     amount_cents?: true
+    amount_cents_paid?: true
   }
 
   export type PaymentsMinAggregateInputType = {
@@ -5832,6 +5839,7 @@ export namespace Prisma {
     user_id?: true
     subscription_id?: true
     amount_cents?: true
+    amount_cents_paid?: true
     currency?: true
     status?: true
     payment_method_id?: true
@@ -5846,6 +5854,7 @@ export namespace Prisma {
     user_id?: true
     subscription_id?: true
     amount_cents?: true
+    amount_cents_paid?: true
     currency?: true
     status?: true
     payment_method_id?: true
@@ -5860,6 +5869,7 @@ export namespace Prisma {
     user_id?: true
     subscription_id?: true
     amount_cents?: true
+    amount_cents_paid?: true
     currency?: true
     status?: true
     payment_method_id?: true
@@ -5961,6 +5971,7 @@ export namespace Prisma {
     user_id: string
     subscription_id: string | null
     amount_cents: number
+    amount_cents_paid: number | null
     currency: $Enums.Currency
     status: $Enums.PaymentStatus
     payment_method_id: string
@@ -5994,6 +6005,7 @@ export namespace Prisma {
     user_id?: boolean
     subscription_id?: boolean
     amount_cents?: boolean
+    amount_cents_paid?: boolean
     currency?: boolean
     status?: boolean
     payment_method_id?: boolean
@@ -6015,6 +6027,7 @@ export namespace Prisma {
     user_id?: boolean
     subscription_id?: boolean
     amount_cents?: boolean
+    amount_cents_paid?: boolean
     currency?: boolean
     status?: boolean
     payment_method_id?: boolean
@@ -6032,6 +6045,7 @@ export namespace Prisma {
     user_id?: boolean
     subscription_id?: boolean
     amount_cents?: boolean
+    amount_cents_paid?: boolean
     currency?: boolean
     status?: boolean
     payment_method_id?: boolean
@@ -6049,6 +6063,7 @@ export namespace Prisma {
     user_id?: boolean
     subscription_id?: boolean
     amount_cents?: boolean
+    amount_cents_paid?: boolean
     currency?: boolean
     status?: boolean
     payment_method_id?: boolean
@@ -6058,7 +6073,7 @@ export namespace Prisma {
     updated_at?: boolean
   }
 
-  export type PaymentsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "user_id" | "subscription_id" | "amount_cents" | "currency" | "status" | "payment_method_id" | "transaction_reference" | "paid_at" | "created_at" | "updated_at", ExtArgs["result"]["payments"]>
+  export type PaymentsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "user_id" | "subscription_id" | "amount_cents" | "amount_cents_paid" | "currency" | "status" | "payment_method_id" | "transaction_reference" | "paid_at" | "created_at" | "updated_at", ExtArgs["result"]["payments"]>
   export type PaymentsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UsersDefaultArgs<ExtArgs>
     subscription?: boolean | Payments$subscriptionArgs<ExtArgs>
@@ -6094,6 +6109,7 @@ export namespace Prisma {
       user_id: string
       subscription_id: string | null
       amount_cents: number
+      amount_cents_paid: number | null
       currency: $Enums.Currency
       status: $Enums.PaymentStatus
       payment_method_id: string
@@ -6534,6 +6550,7 @@ export namespace Prisma {
     readonly user_id: FieldRef<"Payments", 'String'>
     readonly subscription_id: FieldRef<"Payments", 'String'>
     readonly amount_cents: FieldRef<"Payments", 'Int'>
+    readonly amount_cents_paid: FieldRef<"Payments", 'Int'>
     readonly currency: FieldRef<"Payments", 'Currency'>
     readonly status: FieldRef<"Payments", 'PaymentStatus'>
     readonly payment_method_id: FieldRef<"Payments", 'String'>
@@ -7078,6 +7095,8 @@ export namespace Prisma {
     last_digits: number | null
     expiry_month: number | null
     expiry_year: number | null
+    authorization_code: string | null
+    reusable: boolean | null
     brand: $Enums.CardBrand | null
     created_at: Date | null
     updated_at: Date | null
@@ -7091,6 +7110,8 @@ export namespace Prisma {
     last_digits: number | null
     expiry_month: number | null
     expiry_year: number | null
+    authorization_code: string | null
+    reusable: boolean | null
     brand: $Enums.CardBrand | null
     created_at: Date | null
     updated_at: Date | null
@@ -7104,6 +7125,8 @@ export namespace Prisma {
     last_digits: number
     expiry_month: number
     expiry_year: number
+    authorization_code: number
+    reusable: number
     brand: number
     created_at: number
     updated_at: number
@@ -7131,6 +7154,8 @@ export namespace Prisma {
     last_digits?: true
     expiry_month?: true
     expiry_year?: true
+    authorization_code?: true
+    reusable?: true
     brand?: true
     created_at?: true
     updated_at?: true
@@ -7144,6 +7169,8 @@ export namespace Prisma {
     last_digits?: true
     expiry_month?: true
     expiry_year?: true
+    authorization_code?: true
+    reusable?: true
     brand?: true
     created_at?: true
     updated_at?: true
@@ -7157,6 +7184,8 @@ export namespace Prisma {
     last_digits?: true
     expiry_month?: true
     expiry_year?: true
+    authorization_code?: true
+    reusable?: true
     brand?: true
     created_at?: true
     updated_at?: true
@@ -7257,6 +7286,8 @@ export namespace Prisma {
     last_digits: number | null
     expiry_month: number | null
     expiry_year: number | null
+    authorization_code: string | null
+    reusable: boolean
     brand: $Enums.CardBrand | null
     created_at: Date
     updated_at: Date
@@ -7289,6 +7320,8 @@ export namespace Prisma {
     last_digits?: boolean
     expiry_month?: boolean
     expiry_year?: boolean
+    authorization_code?: boolean
+    reusable?: boolean
     brand?: boolean
     created_at?: boolean
     updated_at?: boolean
@@ -7305,6 +7338,8 @@ export namespace Prisma {
     last_digits?: boolean
     expiry_month?: boolean
     expiry_year?: boolean
+    authorization_code?: boolean
+    reusable?: boolean
     brand?: boolean
     created_at?: boolean
     updated_at?: boolean
@@ -7319,6 +7354,8 @@ export namespace Prisma {
     last_digits?: boolean
     expiry_month?: boolean
     expiry_year?: boolean
+    authorization_code?: boolean
+    reusable?: boolean
     brand?: boolean
     created_at?: boolean
     updated_at?: boolean
@@ -7333,12 +7370,14 @@ export namespace Prisma {
     last_digits?: boolean
     expiry_month?: boolean
     expiry_year?: boolean
+    authorization_code?: boolean
+    reusable?: boolean
     brand?: boolean
     created_at?: boolean
     updated_at?: boolean
   }
 
-  export type PaymentMethodsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "user_id" | "provider" | "type" | "last_digits" | "expiry_month" | "expiry_year" | "brand" | "created_at" | "updated_at", ExtArgs["result"]["paymentMethods"]>
+  export type PaymentMethodsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "user_id" | "provider" | "type" | "last_digits" | "expiry_month" | "expiry_year" | "authorization_code" | "reusable" | "brand" | "created_at" | "updated_at", ExtArgs["result"]["paymentMethods"]>
   export type PaymentMethodsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UsersDefaultArgs<ExtArgs>
     Payments?: boolean | PaymentMethods$PaymentsArgs<ExtArgs>
@@ -7365,6 +7404,8 @@ export namespace Prisma {
       last_digits: number | null
       expiry_month: number | null
       expiry_year: number | null
+      authorization_code: string | null
+      reusable: boolean
       brand: $Enums.CardBrand | null
       created_at: Date
       updated_at: Date
@@ -7800,6 +7841,8 @@ export namespace Prisma {
     readonly last_digits: FieldRef<"PaymentMethods", 'Int'>
     readonly expiry_month: FieldRef<"PaymentMethods", 'Int'>
     readonly expiry_year: FieldRef<"PaymentMethods", 'Int'>
+    readonly authorization_code: FieldRef<"PaymentMethods", 'String'>
+    readonly reusable: FieldRef<"PaymentMethods", 'Boolean'>
     readonly brand: FieldRef<"PaymentMethods", 'CardBrand'>
     readonly created_at: FieldRef<"PaymentMethods", 'DateTime'>
     readonly updated_at: FieldRef<"PaymentMethods", 'DateTime'>
@@ -8273,8 +8316,12 @@ export namespace Prisma {
     currency: $Enums.Currency | null
     due_date: Date | null
     paid_at: Date | null
+    billingStart: Date | null
+    billingEnd: Date | null
     status: $Enums.InvoiceStatus | null
     invoice_number: string | null
+    invoiceJobId: string | null
+    subscriptionJobId: string | null
     created_at: Date | null
     updated_at: Date | null
   }
@@ -8289,8 +8336,12 @@ export namespace Prisma {
     currency: $Enums.Currency | null
     due_date: Date | null
     paid_at: Date | null
+    billingStart: Date | null
+    billingEnd: Date | null
     status: $Enums.InvoiceStatus | null
     invoice_number: string | null
+    invoiceJobId: string | null
+    subscriptionJobId: string | null
     created_at: Date | null
     updated_at: Date | null
   }
@@ -8305,8 +8356,12 @@ export namespace Prisma {
     currency: number
     due_date: number
     paid_at: number
+    billingStart: number
+    billingEnd: number
     status: number
     invoice_number: number
+    invoiceJobId: number
+    subscriptionJobId: number
     created_at: number
     updated_at: number
     _all: number
@@ -8333,8 +8388,12 @@ export namespace Prisma {
     currency?: true
     due_date?: true
     paid_at?: true
+    billingStart?: true
+    billingEnd?: true
     status?: true
     invoice_number?: true
+    invoiceJobId?: true
+    subscriptionJobId?: true
     created_at?: true
     updated_at?: true
   }
@@ -8349,8 +8408,12 @@ export namespace Prisma {
     currency?: true
     due_date?: true
     paid_at?: true
+    billingStart?: true
+    billingEnd?: true
     status?: true
     invoice_number?: true
+    invoiceJobId?: true
+    subscriptionJobId?: true
     created_at?: true
     updated_at?: true
   }
@@ -8365,8 +8428,12 @@ export namespace Prisma {
     currency?: true
     due_date?: true
     paid_at?: true
+    billingStart?: true
+    billingEnd?: true
     status?: true
     invoice_number?: true
+    invoiceJobId?: true
+    subscriptionJobId?: true
     created_at?: true
     updated_at?: true
     _all?: true
@@ -8468,8 +8535,12 @@ export namespace Prisma {
     currency: $Enums.Currency | null
     due_date: Date | null
     paid_at: Date | null
+    billingStart: Date | null
+    billingEnd: Date | null
     status: $Enums.InvoiceStatus
     invoice_number: string
+    invoiceJobId: string
+    subscriptionJobId: string | null
     created_at: Date
     updated_at: Date
     _count: InvoicesCountAggregateOutputType | null
@@ -8503,8 +8574,12 @@ export namespace Prisma {
     currency?: boolean
     due_date?: boolean
     paid_at?: boolean
+    billingStart?: boolean
+    billingEnd?: boolean
     status?: boolean
     invoice_number?: boolean
+    invoiceJobId?: boolean
+    subscriptionJobId?: boolean
     created_at?: boolean
     updated_at?: boolean
     user?: boolean | UsersDefaultArgs<ExtArgs>
@@ -8524,8 +8599,12 @@ export namespace Prisma {
     currency?: boolean
     due_date?: boolean
     paid_at?: boolean
+    billingStart?: boolean
+    billingEnd?: boolean
     status?: boolean
     invoice_number?: boolean
+    invoiceJobId?: boolean
+    subscriptionJobId?: boolean
     created_at?: boolean
     updated_at?: boolean
     user?: boolean | UsersDefaultArgs<ExtArgs>
@@ -8543,8 +8622,12 @@ export namespace Prisma {
     currency?: boolean
     due_date?: boolean
     paid_at?: boolean
+    billingStart?: boolean
+    billingEnd?: boolean
     status?: boolean
     invoice_number?: boolean
+    invoiceJobId?: boolean
+    subscriptionJobId?: boolean
     created_at?: boolean
     updated_at?: boolean
     user?: boolean | UsersDefaultArgs<ExtArgs>
@@ -8562,13 +8645,17 @@ export namespace Prisma {
     currency?: boolean
     due_date?: boolean
     paid_at?: boolean
+    billingStart?: boolean
+    billingEnd?: boolean
     status?: boolean
     invoice_number?: boolean
+    invoiceJobId?: boolean
+    subscriptionJobId?: boolean
     created_at?: boolean
     updated_at?: boolean
   }
 
-  export type InvoicesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "user_id" | "subscription_id" | "payment_id" | "amount_due_cents" | "amount_paid_cents" | "currency" | "due_date" | "paid_at" | "status" | "invoice_number" | "created_at" | "updated_at", ExtArgs["result"]["invoices"]>
+  export type InvoicesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "user_id" | "subscription_id" | "payment_id" | "amount_due_cents" | "amount_paid_cents" | "currency" | "due_date" | "paid_at" | "billingStart" | "billingEnd" | "status" | "invoice_number" | "invoiceJobId" | "subscriptionJobId" | "created_at" | "updated_at", ExtArgs["result"]["invoices"]>
   export type InvoicesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UsersDefaultArgs<ExtArgs>
     subscription?: boolean | SubscriptionsDefaultArgs<ExtArgs>
@@ -8605,8 +8692,12 @@ export namespace Prisma {
       currency: $Enums.Currency | null
       due_date: Date | null
       paid_at: Date | null
+      billingStart: Date | null
+      billingEnd: Date | null
       status: $Enums.InvoiceStatus
       invoice_number: string
+      invoiceJobId: string
+      subscriptionJobId: string | null
       created_at: Date
       updated_at: Date
     }, ExtArgs["result"]["invoices"]>
@@ -9045,8 +9136,12 @@ export namespace Prisma {
     readonly currency: FieldRef<"Invoices", 'Currency'>
     readonly due_date: FieldRef<"Invoices", 'DateTime'>
     readonly paid_at: FieldRef<"Invoices", 'DateTime'>
+    readonly billingStart: FieldRef<"Invoices", 'DateTime'>
+    readonly billingEnd: FieldRef<"Invoices", 'DateTime'>
     readonly status: FieldRef<"Invoices", 'InvoiceStatus'>
     readonly invoice_number: FieldRef<"Invoices", 'String'>
+    readonly invoiceJobId: FieldRef<"Invoices", 'String'>
+    readonly subscriptionJobId: FieldRef<"Invoices", 'String'>
     readonly created_at: FieldRef<"Invoices", 'DateTime'>
     readonly updated_at: FieldRef<"Invoices", 'DateTime'>
   }
@@ -12874,6 +12969,7 @@ export namespace Prisma {
     user_id: 'user_id',
     subscription_id: 'subscription_id',
     amount_cents: 'amount_cents',
+    amount_cents_paid: 'amount_cents_paid',
     currency: 'currency',
     status: 'status',
     payment_method_id: 'payment_method_id',
@@ -12894,6 +12990,8 @@ export namespace Prisma {
     last_digits: 'last_digits',
     expiry_month: 'expiry_month',
     expiry_year: 'expiry_year',
+    authorization_code: 'authorization_code',
+    reusable: 'reusable',
     brand: 'brand',
     created_at: 'created_at',
     updated_at: 'updated_at'
@@ -12912,8 +13010,12 @@ export namespace Prisma {
     currency: 'currency',
     due_date: 'due_date',
     paid_at: 'paid_at',
+    billingStart: 'billingStart',
+    billingEnd: 'billingEnd',
     status: 'status',
     invoice_number: 'invoice_number',
+    invoiceJobId: 'invoiceJobId',
+    subscriptionJobId: 'subscriptionJobId',
     created_at: 'created_at',
     updated_at: 'updated_at'
   };
@@ -13508,6 +13610,7 @@ export namespace Prisma {
 
   export type SubscriptionsWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    user_id_plan_id?: SubscriptionsUser_idPlan_idCompoundUniqueInput
     AND?: SubscriptionsWhereInput | SubscriptionsWhereInput[]
     OR?: SubscriptionsWhereInput[]
     NOT?: SubscriptionsWhereInput | SubscriptionsWhereInput[]
@@ -13525,7 +13628,7 @@ export namespace Prisma {
     plan?: XOR<PlansScalarRelationFilter, PlansWhereInput>
     Payments?: PaymentsListRelationFilter
     Invoices?: InvoicesListRelationFilter
-  }, "id">
+  }, "id" | "user_id_plan_id">
 
   export type SubscriptionsOrderByWithAggregationInput = {
     id?: SortOrder
@@ -13569,6 +13672,7 @@ export namespace Prisma {
     user_id?: StringFilter<"Payments"> | string
     subscription_id?: StringNullableFilter<"Payments"> | string | null
     amount_cents?: IntFilter<"Payments"> | number
+    amount_cents_paid?: IntNullableFilter<"Payments"> | number | null
     currency?: EnumCurrencyFilter<"Payments"> | $Enums.Currency
     status?: EnumPaymentStatusFilter<"Payments"> | $Enums.PaymentStatus
     payment_method_id?: StringFilter<"Payments"> | string
@@ -13589,6 +13693,7 @@ export namespace Prisma {
     user_id?: SortOrder
     subscription_id?: SortOrderInput | SortOrder
     amount_cents?: SortOrder
+    amount_cents_paid?: SortOrderInput | SortOrder
     currency?: SortOrder
     status?: SortOrder
     payment_method_id?: SortOrder
@@ -13612,6 +13717,7 @@ export namespace Prisma {
     user_id?: StringFilter<"Payments"> | string
     subscription_id?: StringNullableFilter<"Payments"> | string | null
     amount_cents?: IntFilter<"Payments"> | number
+    amount_cents_paid?: IntNullableFilter<"Payments"> | number | null
     currency?: EnumCurrencyFilter<"Payments"> | $Enums.Currency
     status?: EnumPaymentStatusFilter<"Payments"> | $Enums.PaymentStatus
     payment_method_id?: StringFilter<"Payments"> | string
@@ -13632,6 +13738,7 @@ export namespace Prisma {
     user_id?: SortOrder
     subscription_id?: SortOrderInput | SortOrder
     amount_cents?: SortOrder
+    amount_cents_paid?: SortOrderInput | SortOrder
     currency?: SortOrder
     status?: SortOrder
     payment_method_id?: SortOrder
@@ -13654,6 +13761,7 @@ export namespace Prisma {
     user_id?: StringWithAggregatesFilter<"Payments"> | string
     subscription_id?: StringNullableWithAggregatesFilter<"Payments"> | string | null
     amount_cents?: IntWithAggregatesFilter<"Payments"> | number
+    amount_cents_paid?: IntNullableWithAggregatesFilter<"Payments"> | number | null
     currency?: EnumCurrencyWithAggregatesFilter<"Payments"> | $Enums.Currency
     status?: EnumPaymentStatusWithAggregatesFilter<"Payments"> | $Enums.PaymentStatus
     payment_method_id?: StringWithAggregatesFilter<"Payments"> | string
@@ -13674,6 +13782,8 @@ export namespace Prisma {
     last_digits?: IntNullableFilter<"PaymentMethods"> | number | null
     expiry_month?: IntNullableFilter<"PaymentMethods"> | number | null
     expiry_year?: IntNullableFilter<"PaymentMethods"> | number | null
+    authorization_code?: StringNullableFilter<"PaymentMethods"> | string | null
+    reusable?: BoolFilter<"PaymentMethods"> | boolean
     brand?: EnumCardBrandNullableFilter<"PaymentMethods"> | $Enums.CardBrand | null
     created_at?: DateTimeFilter<"PaymentMethods"> | Date | string
     updated_at?: DateTimeFilter<"PaymentMethods"> | Date | string
@@ -13689,6 +13799,8 @@ export namespace Prisma {
     last_digits?: SortOrderInput | SortOrder
     expiry_month?: SortOrderInput | SortOrder
     expiry_year?: SortOrderInput | SortOrder
+    authorization_code?: SortOrderInput | SortOrder
+    reusable?: SortOrder
     brand?: SortOrderInput | SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
@@ -13707,6 +13819,8 @@ export namespace Prisma {
     last_digits?: IntNullableFilter<"PaymentMethods"> | number | null
     expiry_month?: IntNullableFilter<"PaymentMethods"> | number | null
     expiry_year?: IntNullableFilter<"PaymentMethods"> | number | null
+    authorization_code?: StringNullableFilter<"PaymentMethods"> | string | null
+    reusable?: BoolFilter<"PaymentMethods"> | boolean
     brand?: EnumCardBrandNullableFilter<"PaymentMethods"> | $Enums.CardBrand | null
     created_at?: DateTimeFilter<"PaymentMethods"> | Date | string
     updated_at?: DateTimeFilter<"PaymentMethods"> | Date | string
@@ -13722,6 +13836,8 @@ export namespace Prisma {
     last_digits?: SortOrderInput | SortOrder
     expiry_month?: SortOrderInput | SortOrder
     expiry_year?: SortOrderInput | SortOrder
+    authorization_code?: SortOrderInput | SortOrder
+    reusable?: SortOrder
     brand?: SortOrderInput | SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
@@ -13743,6 +13859,8 @@ export namespace Prisma {
     last_digits?: IntNullableWithAggregatesFilter<"PaymentMethods"> | number | null
     expiry_month?: IntNullableWithAggregatesFilter<"PaymentMethods"> | number | null
     expiry_year?: IntNullableWithAggregatesFilter<"PaymentMethods"> | number | null
+    authorization_code?: StringNullableWithAggregatesFilter<"PaymentMethods"> | string | null
+    reusable?: BoolWithAggregatesFilter<"PaymentMethods"> | boolean
     brand?: EnumCardBrandNullableWithAggregatesFilter<"PaymentMethods"> | $Enums.CardBrand | null
     created_at?: DateTimeWithAggregatesFilter<"PaymentMethods"> | Date | string
     updated_at?: DateTimeWithAggregatesFilter<"PaymentMethods"> | Date | string
@@ -13761,8 +13879,12 @@ export namespace Prisma {
     currency?: EnumCurrencyNullableFilter<"Invoices"> | $Enums.Currency | null
     due_date?: DateTimeNullableFilter<"Invoices"> | Date | string | null
     paid_at?: DateTimeNullableFilter<"Invoices"> | Date | string | null
+    billingStart?: DateTimeNullableFilter<"Invoices"> | Date | string | null
+    billingEnd?: DateTimeNullableFilter<"Invoices"> | Date | string | null
     status?: EnumInvoiceStatusFilter<"Invoices"> | $Enums.InvoiceStatus
     invoice_number?: StringFilter<"Invoices"> | string
+    invoiceJobId?: StringFilter<"Invoices"> | string
+    subscriptionJobId?: StringNullableFilter<"Invoices"> | string | null
     created_at?: DateTimeFilter<"Invoices"> | Date | string
     updated_at?: DateTimeFilter<"Invoices"> | Date | string
     user?: XOR<UsersScalarRelationFilter, UsersWhereInput>
@@ -13781,8 +13903,12 @@ export namespace Prisma {
     currency?: SortOrderInput | SortOrder
     due_date?: SortOrderInput | SortOrder
     paid_at?: SortOrderInput | SortOrder
+    billingStart?: SortOrderInput | SortOrder
+    billingEnd?: SortOrderInput | SortOrder
     status?: SortOrder
     invoice_number?: SortOrder
+    invoiceJobId?: SortOrder
+    subscriptionJobId?: SortOrderInput | SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
     user?: UsersOrderByWithRelationInput
@@ -13794,6 +13920,9 @@ export namespace Prisma {
   export type InvoicesWhereUniqueInput = Prisma.AtLeast<{
     id?: string
     invoice_number?: string
+    invoiceJobId?: string
+    subscriptionJobId?: string
+    subscription_id_billingStart?: InvoicesSubscription_idBillingStartCompoundUniqueInput
     AND?: InvoicesWhereInput | InvoicesWhereInput[]
     OR?: InvoicesWhereInput[]
     NOT?: InvoicesWhereInput | InvoicesWhereInput[]
@@ -13805,6 +13934,8 @@ export namespace Prisma {
     currency?: EnumCurrencyNullableFilter<"Invoices"> | $Enums.Currency | null
     due_date?: DateTimeNullableFilter<"Invoices"> | Date | string | null
     paid_at?: DateTimeNullableFilter<"Invoices"> | Date | string | null
+    billingStart?: DateTimeNullableFilter<"Invoices"> | Date | string | null
+    billingEnd?: DateTimeNullableFilter<"Invoices"> | Date | string | null
     status?: EnumInvoiceStatusFilter<"Invoices"> | $Enums.InvoiceStatus
     created_at?: DateTimeFilter<"Invoices"> | Date | string
     updated_at?: DateTimeFilter<"Invoices"> | Date | string
@@ -13812,7 +13943,7 @@ export namespace Prisma {
     subscription?: XOR<SubscriptionsScalarRelationFilter, SubscriptionsWhereInput>
     payment?: XOR<PaymentsNullableScalarRelationFilter, PaymentsWhereInput> | null
     payment_invoice?: Payment_invoiceListRelationFilter
-  }, "id" | "invoice_number">
+  }, "id" | "invoice_number" | "invoiceJobId" | "subscriptionJobId" | "subscription_id_billingStart">
 
   export type InvoicesOrderByWithAggregationInput = {
     id?: SortOrder
@@ -13824,8 +13955,12 @@ export namespace Prisma {
     currency?: SortOrderInput | SortOrder
     due_date?: SortOrderInput | SortOrder
     paid_at?: SortOrderInput | SortOrder
+    billingStart?: SortOrderInput | SortOrder
+    billingEnd?: SortOrderInput | SortOrder
     status?: SortOrder
     invoice_number?: SortOrder
+    invoiceJobId?: SortOrder
+    subscriptionJobId?: SortOrderInput | SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
     _count?: InvoicesCountOrderByAggregateInput
@@ -13848,8 +13983,12 @@ export namespace Prisma {
     currency?: EnumCurrencyNullableWithAggregatesFilter<"Invoices"> | $Enums.Currency | null
     due_date?: DateTimeNullableWithAggregatesFilter<"Invoices"> | Date | string | null
     paid_at?: DateTimeNullableWithAggregatesFilter<"Invoices"> | Date | string | null
+    billingStart?: DateTimeNullableWithAggregatesFilter<"Invoices"> | Date | string | null
+    billingEnd?: DateTimeNullableWithAggregatesFilter<"Invoices"> | Date | string | null
     status?: EnumInvoiceStatusWithAggregatesFilter<"Invoices"> | $Enums.InvoiceStatus
     invoice_number?: StringWithAggregatesFilter<"Invoices"> | string
+    invoiceJobId?: StringWithAggregatesFilter<"Invoices"> | string
+    subscriptionJobId?: StringNullableWithAggregatesFilter<"Invoices"> | string | null
     created_at?: DateTimeWithAggregatesFilter<"Invoices"> | Date | string
     updated_at?: DateTimeWithAggregatesFilter<"Invoices"> | Date | string
   }
@@ -14463,6 +14602,7 @@ export namespace Prisma {
   export type PaymentsCreateInput = {
     id?: string
     amount_cents: number
+    amount_cents_paid?: number | null
     currency: $Enums.Currency
     status: $Enums.PaymentStatus
     transaction_reference?: string | null
@@ -14482,6 +14622,7 @@ export namespace Prisma {
     user_id: string
     subscription_id?: string | null
     amount_cents: number
+    amount_cents_paid?: number | null
     currency: $Enums.Currency
     status: $Enums.PaymentStatus
     payment_method_id: string
@@ -14497,6 +14638,7 @@ export namespace Prisma {
   export type PaymentsUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     amount_cents?: IntFieldUpdateOperationsInput | number
+    amount_cents_paid?: NullableIntFieldUpdateOperationsInput | number | null
     currency?: EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
     status?: EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
     transaction_reference?: NullableStringFieldUpdateOperationsInput | string | null
@@ -14516,6 +14658,7 @@ export namespace Prisma {
     user_id?: StringFieldUpdateOperationsInput | string
     subscription_id?: NullableStringFieldUpdateOperationsInput | string | null
     amount_cents?: IntFieldUpdateOperationsInput | number
+    amount_cents_paid?: NullableIntFieldUpdateOperationsInput | number | null
     currency?: EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
     status?: EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
     payment_method_id?: StringFieldUpdateOperationsInput | string
@@ -14533,6 +14676,7 @@ export namespace Prisma {
     user_id: string
     subscription_id?: string | null
     amount_cents: number
+    amount_cents_paid?: number | null
     currency: $Enums.Currency
     status: $Enums.PaymentStatus
     payment_method_id: string
@@ -14545,6 +14689,7 @@ export namespace Prisma {
   export type PaymentsUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     amount_cents?: IntFieldUpdateOperationsInput | number
+    amount_cents_paid?: NullableIntFieldUpdateOperationsInput | number | null
     currency?: EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
     status?: EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
     transaction_reference?: NullableStringFieldUpdateOperationsInput | string | null
@@ -14558,6 +14703,7 @@ export namespace Prisma {
     user_id?: StringFieldUpdateOperationsInput | string
     subscription_id?: NullableStringFieldUpdateOperationsInput | string | null
     amount_cents?: IntFieldUpdateOperationsInput | number
+    amount_cents_paid?: NullableIntFieldUpdateOperationsInput | number | null
     currency?: EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
     status?: EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
     payment_method_id?: StringFieldUpdateOperationsInput | string
@@ -14574,6 +14720,8 @@ export namespace Prisma {
     last_digits?: number | null
     expiry_month?: number | null
     expiry_year?: number | null
+    authorization_code?: string | null
+    reusable?: boolean
     brand?: $Enums.CardBrand | null
     created_at?: Date | string
     updated_at?: Date | string
@@ -14589,6 +14737,8 @@ export namespace Prisma {
     last_digits?: number | null
     expiry_month?: number | null
     expiry_year?: number | null
+    authorization_code?: string | null
+    reusable?: boolean
     brand?: $Enums.CardBrand | null
     created_at?: Date | string
     updated_at?: Date | string
@@ -14602,6 +14752,8 @@ export namespace Prisma {
     last_digits?: NullableIntFieldUpdateOperationsInput | number | null
     expiry_month?: NullableIntFieldUpdateOperationsInput | number | null
     expiry_year?: NullableIntFieldUpdateOperationsInput | number | null
+    authorization_code?: NullableStringFieldUpdateOperationsInput | string | null
+    reusable?: BoolFieldUpdateOperationsInput | boolean
     brand?: NullableEnumCardBrandFieldUpdateOperationsInput | $Enums.CardBrand | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14617,6 +14769,8 @@ export namespace Prisma {
     last_digits?: NullableIntFieldUpdateOperationsInput | number | null
     expiry_month?: NullableIntFieldUpdateOperationsInput | number | null
     expiry_year?: NullableIntFieldUpdateOperationsInput | number | null
+    authorization_code?: NullableStringFieldUpdateOperationsInput | string | null
+    reusable?: BoolFieldUpdateOperationsInput | boolean
     brand?: NullableEnumCardBrandFieldUpdateOperationsInput | $Enums.CardBrand | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14631,6 +14785,8 @@ export namespace Prisma {
     last_digits?: number | null
     expiry_month?: number | null
     expiry_year?: number | null
+    authorization_code?: string | null
+    reusable?: boolean
     brand?: $Enums.CardBrand | null
     created_at?: Date | string
     updated_at?: Date | string
@@ -14643,6 +14799,8 @@ export namespace Prisma {
     last_digits?: NullableIntFieldUpdateOperationsInput | number | null
     expiry_month?: NullableIntFieldUpdateOperationsInput | number | null
     expiry_year?: NullableIntFieldUpdateOperationsInput | number | null
+    authorization_code?: NullableStringFieldUpdateOperationsInput | string | null
+    reusable?: BoolFieldUpdateOperationsInput | boolean
     brand?: NullableEnumCardBrandFieldUpdateOperationsInput | $Enums.CardBrand | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14656,6 +14814,8 @@ export namespace Prisma {
     last_digits?: NullableIntFieldUpdateOperationsInput | number | null
     expiry_month?: NullableIntFieldUpdateOperationsInput | number | null
     expiry_year?: NullableIntFieldUpdateOperationsInput | number | null
+    authorization_code?: NullableStringFieldUpdateOperationsInput | string | null
+    reusable?: BoolFieldUpdateOperationsInput | boolean
     brand?: NullableEnumCardBrandFieldUpdateOperationsInput | $Enums.CardBrand | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14668,8 +14828,12 @@ export namespace Prisma {
     currency?: $Enums.Currency | null
     due_date?: Date | string | null
     paid_at?: Date | string | null
+    billingStart?: Date | string | null
+    billingEnd?: Date | string | null
     status: $Enums.InvoiceStatus
     invoice_number: string
+    invoiceJobId: string
+    subscriptionJobId?: string | null
     created_at?: Date | string
     updated_at?: Date | string
     user: UsersCreateNestedOneWithoutInvoicesInput
@@ -14688,8 +14852,12 @@ export namespace Prisma {
     currency?: $Enums.Currency | null
     due_date?: Date | string | null
     paid_at?: Date | string | null
+    billingStart?: Date | string | null
+    billingEnd?: Date | string | null
     status: $Enums.InvoiceStatus
     invoice_number: string
+    invoiceJobId: string
+    subscriptionJobId?: string | null
     created_at?: Date | string
     updated_at?: Date | string
     payment_invoice?: payment_invoiceUncheckedCreateNestedManyWithoutInvoiceInput
@@ -14702,8 +14870,12 @@ export namespace Prisma {
     currency?: NullableEnumCurrencyFieldUpdateOperationsInput | $Enums.Currency | null
     due_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    billingStart?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    billingEnd?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: EnumInvoiceStatusFieldUpdateOperationsInput | $Enums.InvoiceStatus
     invoice_number?: StringFieldUpdateOperationsInput | string
+    invoiceJobId?: StringFieldUpdateOperationsInput | string
+    subscriptionJobId?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UsersUpdateOneRequiredWithoutInvoicesNestedInput
@@ -14722,8 +14894,12 @@ export namespace Prisma {
     currency?: NullableEnumCurrencyFieldUpdateOperationsInput | $Enums.Currency | null
     due_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    billingStart?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    billingEnd?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: EnumInvoiceStatusFieldUpdateOperationsInput | $Enums.InvoiceStatus
     invoice_number?: StringFieldUpdateOperationsInput | string
+    invoiceJobId?: StringFieldUpdateOperationsInput | string
+    subscriptionJobId?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     payment_invoice?: payment_invoiceUncheckedUpdateManyWithoutInvoiceNestedInput
@@ -14739,8 +14915,12 @@ export namespace Prisma {
     currency?: $Enums.Currency | null
     due_date?: Date | string | null
     paid_at?: Date | string | null
+    billingStart?: Date | string | null
+    billingEnd?: Date | string | null
     status: $Enums.InvoiceStatus
     invoice_number: string
+    invoiceJobId: string
+    subscriptionJobId?: string | null
     created_at?: Date | string
     updated_at?: Date | string
   }
@@ -14752,8 +14932,12 @@ export namespace Prisma {
     currency?: NullableEnumCurrencyFieldUpdateOperationsInput | $Enums.Currency | null
     due_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    billingStart?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    billingEnd?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: EnumInvoiceStatusFieldUpdateOperationsInput | $Enums.InvoiceStatus
     invoice_number?: StringFieldUpdateOperationsInput | string
+    invoiceJobId?: StringFieldUpdateOperationsInput | string
+    subscriptionJobId?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -14768,8 +14952,12 @@ export namespace Prisma {
     currency?: NullableEnumCurrencyFieldUpdateOperationsInput | $Enums.Currency | null
     due_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    billingStart?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    billingEnd?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: EnumInvoiceStatusFieldUpdateOperationsInput | $Enums.InvoiceStatus
     invoice_number?: StringFieldUpdateOperationsInput | string
+    invoiceJobId?: StringFieldUpdateOperationsInput | string
+    subscriptionJobId?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -15417,6 +15605,11 @@ export namespace Prisma {
     isNot?: PlansWhereInput
   }
 
+  export type SubscriptionsUser_idPlan_idCompoundUniqueInput = {
+    user_id: string
+    plan_id: string
+  }
+
   export type SubscriptionsCountOrderByAggregateInput = {
     id?: SortOrder
     user_id?: SortOrder
@@ -15511,6 +15704,7 @@ export namespace Prisma {
     user_id?: SortOrder
     subscription_id?: SortOrder
     amount_cents?: SortOrder
+    amount_cents_paid?: SortOrder
     currency?: SortOrder
     status?: SortOrder
     payment_method_id?: SortOrder
@@ -15522,6 +15716,7 @@ export namespace Prisma {
 
   export type PaymentsAvgOrderByAggregateInput = {
     amount_cents?: SortOrder
+    amount_cents_paid?: SortOrder
   }
 
   export type PaymentsMaxOrderByAggregateInput = {
@@ -15529,6 +15724,7 @@ export namespace Prisma {
     user_id?: SortOrder
     subscription_id?: SortOrder
     amount_cents?: SortOrder
+    amount_cents_paid?: SortOrder
     currency?: SortOrder
     status?: SortOrder
     payment_method_id?: SortOrder
@@ -15543,6 +15739,7 @@ export namespace Prisma {
     user_id?: SortOrder
     subscription_id?: SortOrder
     amount_cents?: SortOrder
+    amount_cents_paid?: SortOrder
     currency?: SortOrder
     status?: SortOrder
     payment_method_id?: SortOrder
@@ -15554,6 +15751,7 @@ export namespace Prisma {
 
   export type PaymentsSumOrderByAggregateInput = {
     amount_cents?: SortOrder
+    amount_cents_paid?: SortOrder
   }
 
   export type EnumPaymentStatusWithAggregatesFilter<$PrismaModel = never> = {
@@ -15595,6 +15793,8 @@ export namespace Prisma {
     last_digits?: SortOrder
     expiry_month?: SortOrder
     expiry_year?: SortOrder
+    authorization_code?: SortOrder
+    reusable?: SortOrder
     brand?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
@@ -15614,6 +15814,8 @@ export namespace Prisma {
     last_digits?: SortOrder
     expiry_month?: SortOrder
     expiry_year?: SortOrder
+    authorization_code?: SortOrder
+    reusable?: SortOrder
     brand?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
@@ -15627,6 +15829,8 @@ export namespace Prisma {
     last_digits?: SortOrder
     expiry_month?: SortOrder
     expiry_year?: SortOrder
+    authorization_code?: SortOrder
+    reusable?: SortOrder
     brand?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
@@ -15692,6 +15896,11 @@ export namespace Prisma {
     isNot?: PaymentsWhereInput | null
   }
 
+  export type InvoicesSubscription_idBillingStartCompoundUniqueInput = {
+    subscription_id: string
+    billingStart: Date | string
+  }
+
   export type InvoicesCountOrderByAggregateInput = {
     id?: SortOrder
     user_id?: SortOrder
@@ -15702,8 +15911,12 @@ export namespace Prisma {
     currency?: SortOrder
     due_date?: SortOrder
     paid_at?: SortOrder
+    billingStart?: SortOrder
+    billingEnd?: SortOrder
     status?: SortOrder
     invoice_number?: SortOrder
+    invoiceJobId?: SortOrder
+    subscriptionJobId?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
   }
@@ -15723,8 +15936,12 @@ export namespace Prisma {
     currency?: SortOrder
     due_date?: SortOrder
     paid_at?: SortOrder
+    billingStart?: SortOrder
+    billingEnd?: SortOrder
     status?: SortOrder
     invoice_number?: SortOrder
+    invoiceJobId?: SortOrder
+    subscriptionJobId?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
   }
@@ -15739,8 +15956,12 @@ export namespace Prisma {
     currency?: SortOrder
     due_date?: SortOrder
     paid_at?: SortOrder
+    billingStart?: SortOrder
+    billingEnd?: SortOrder
     status?: SortOrder
     invoice_number?: SortOrder
+    invoiceJobId?: SortOrder
+    subscriptionJobId?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
   }
@@ -17183,6 +17404,7 @@ export namespace Prisma {
   export type PaymentsCreateWithoutUserInput = {
     id?: string
     amount_cents: number
+    amount_cents_paid?: number | null
     currency: $Enums.Currency
     status: $Enums.PaymentStatus
     transaction_reference?: string | null
@@ -17200,6 +17422,7 @@ export namespace Prisma {
     id?: string
     subscription_id?: string | null
     amount_cents: number
+    amount_cents_paid?: number | null
     currency: $Enums.Currency
     status: $Enums.PaymentStatus
     payment_method_id: string
@@ -17229,6 +17452,8 @@ export namespace Prisma {
     last_digits?: number | null
     expiry_month?: number | null
     expiry_year?: number | null
+    authorization_code?: string | null
+    reusable?: boolean
     brand?: $Enums.CardBrand | null
     created_at?: Date | string
     updated_at?: Date | string
@@ -17242,6 +17467,8 @@ export namespace Prisma {
     last_digits?: number | null
     expiry_month?: number | null
     expiry_year?: number | null
+    authorization_code?: string | null
+    reusable?: boolean
     brand?: $Enums.CardBrand | null
     created_at?: Date | string
     updated_at?: Date | string
@@ -17265,8 +17492,12 @@ export namespace Prisma {
     currency?: $Enums.Currency | null
     due_date?: Date | string | null
     paid_at?: Date | string | null
+    billingStart?: Date | string | null
+    billingEnd?: Date | string | null
     status: $Enums.InvoiceStatus
     invoice_number: string
+    invoiceJobId: string
+    subscriptionJobId?: string | null
     created_at?: Date | string
     updated_at?: Date | string
     subscription: SubscriptionsCreateNestedOneWithoutInvoicesInput
@@ -17283,8 +17514,12 @@ export namespace Prisma {
     currency?: $Enums.Currency | null
     due_date?: Date | string | null
     paid_at?: Date | string | null
+    billingStart?: Date | string | null
+    billingEnd?: Date | string | null
     status: $Enums.InvoiceStatus
     invoice_number: string
+    invoiceJobId: string
+    subscriptionJobId?: string | null
     created_at?: Date | string
     updated_at?: Date | string
     payment_invoice?: payment_invoiceUncheckedCreateNestedManyWithoutInvoiceInput
@@ -17357,6 +17592,7 @@ export namespace Prisma {
     user_id?: StringFilter<"Payments"> | string
     subscription_id?: StringNullableFilter<"Payments"> | string | null
     amount_cents?: IntFilter<"Payments"> | number
+    amount_cents_paid?: IntNullableFilter<"Payments"> | number | null
     currency?: EnumCurrencyFilter<"Payments"> | $Enums.Currency
     status?: EnumPaymentStatusFilter<"Payments"> | $Enums.PaymentStatus
     payment_method_id?: StringFilter<"Payments"> | string
@@ -17393,6 +17629,8 @@ export namespace Prisma {
     last_digits?: IntNullableFilter<"PaymentMethods"> | number | null
     expiry_month?: IntNullableFilter<"PaymentMethods"> | number | null
     expiry_year?: IntNullableFilter<"PaymentMethods"> | number | null
+    authorization_code?: StringNullableFilter<"PaymentMethods"> | string | null
+    reusable?: BoolFilter<"PaymentMethods"> | boolean
     brand?: EnumCardBrandNullableFilter<"PaymentMethods"> | $Enums.CardBrand | null
     created_at?: DateTimeFilter<"PaymentMethods"> | Date | string
     updated_at?: DateTimeFilter<"PaymentMethods"> | Date | string
@@ -17427,8 +17665,12 @@ export namespace Prisma {
     currency?: EnumCurrencyNullableFilter<"Invoices"> | $Enums.Currency | null
     due_date?: DateTimeNullableFilter<"Invoices"> | Date | string | null
     paid_at?: DateTimeNullableFilter<"Invoices"> | Date | string | null
+    billingStart?: DateTimeNullableFilter<"Invoices"> | Date | string | null
+    billingEnd?: DateTimeNullableFilter<"Invoices"> | Date | string | null
     status?: EnumInvoiceStatusFilter<"Invoices"> | $Enums.InvoiceStatus
     invoice_number?: StringFilter<"Invoices"> | string
+    invoiceJobId?: StringFilter<"Invoices"> | string
+    subscriptionJobId?: StringNullableFilter<"Invoices"> | string | null
     created_at?: DateTimeFilter<"Invoices"> | Date | string
     updated_at?: DateTimeFilter<"Invoices"> | Date | string
   }
@@ -17586,6 +17828,7 @@ export namespace Prisma {
   export type PaymentsCreateWithoutSubscriptionInput = {
     id?: string
     amount_cents: number
+    amount_cents_paid?: number | null
     currency: $Enums.Currency
     status: $Enums.PaymentStatus
     transaction_reference?: string | null
@@ -17603,6 +17846,7 @@ export namespace Prisma {
     id?: string
     user_id: string
     amount_cents: number
+    amount_cents_paid?: number | null
     currency: $Enums.Currency
     status: $Enums.PaymentStatus
     payment_method_id: string
@@ -17632,8 +17876,12 @@ export namespace Prisma {
     currency?: $Enums.Currency | null
     due_date?: Date | string | null
     paid_at?: Date | string | null
+    billingStart?: Date | string | null
+    billingEnd?: Date | string | null
     status: $Enums.InvoiceStatus
     invoice_number: string
+    invoiceJobId: string
+    subscriptionJobId?: string | null
     created_at?: Date | string
     updated_at?: Date | string
     user: UsersCreateNestedOneWithoutInvoicesInput
@@ -17650,8 +17898,12 @@ export namespace Prisma {
     currency?: $Enums.Currency | null
     due_date?: Date | string | null
     paid_at?: Date | string | null
+    billingStart?: Date | string | null
+    billingEnd?: Date | string | null
     status: $Enums.InvoiceStatus
     invoice_number: string
+    invoiceJobId: string
+    subscriptionJobId?: string | null
     created_at?: Date | string
     updated_at?: Date | string
     payment_invoice?: payment_invoiceUncheckedCreateNestedManyWithoutInvoiceInput
@@ -17910,6 +18162,8 @@ export namespace Prisma {
     last_digits?: number | null
     expiry_month?: number | null
     expiry_year?: number | null
+    authorization_code?: string | null
+    reusable?: boolean
     brand?: $Enums.CardBrand | null
     created_at?: Date | string
     updated_at?: Date | string
@@ -17924,6 +18178,8 @@ export namespace Prisma {
     last_digits?: number | null
     expiry_month?: number | null
     expiry_year?: number | null
+    authorization_code?: string | null
+    reusable?: boolean
     brand?: $Enums.CardBrand | null
     created_at?: Date | string
     updated_at?: Date | string
@@ -17997,8 +18253,12 @@ export namespace Prisma {
     currency?: $Enums.Currency | null
     due_date?: Date | string | null
     paid_at?: Date | string | null
+    billingStart?: Date | string | null
+    billingEnd?: Date | string | null
     status: $Enums.InvoiceStatus
     invoice_number: string
+    invoiceJobId: string
+    subscriptionJobId?: string | null
     created_at?: Date | string
     updated_at?: Date | string
     user: UsersCreateNestedOneWithoutInvoicesInput
@@ -18015,8 +18275,12 @@ export namespace Prisma {
     currency?: $Enums.Currency | null
     due_date?: Date | string | null
     paid_at?: Date | string | null
+    billingStart?: Date | string | null
+    billingEnd?: Date | string | null
     status: $Enums.InvoiceStatus
     invoice_number: string
+    invoiceJobId: string
+    subscriptionJobId?: string | null
     created_at?: Date | string
     updated_at?: Date | string
     payment_invoice?: payment_invoiceUncheckedCreateNestedManyWithoutInvoiceInput
@@ -18160,6 +18424,8 @@ export namespace Prisma {
     last_digits?: NullableIntFieldUpdateOperationsInput | number | null
     expiry_month?: NullableIntFieldUpdateOperationsInput | number | null
     expiry_year?: NullableIntFieldUpdateOperationsInput | number | null
+    authorization_code?: NullableStringFieldUpdateOperationsInput | string | null
+    reusable?: BoolFieldUpdateOperationsInput | boolean
     brand?: NullableEnumCardBrandFieldUpdateOperationsInput | $Enums.CardBrand | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -18174,6 +18440,8 @@ export namespace Prisma {
     last_digits?: NullableIntFieldUpdateOperationsInput | number | null
     expiry_month?: NullableIntFieldUpdateOperationsInput | number | null
     expiry_year?: NullableIntFieldUpdateOperationsInput | number | null
+    authorization_code?: NullableStringFieldUpdateOperationsInput | string | null
+    reusable?: BoolFieldUpdateOperationsInput | boolean
     brand?: NullableEnumCardBrandFieldUpdateOperationsInput | $Enums.CardBrand | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -18319,6 +18587,7 @@ export namespace Prisma {
   export type PaymentsCreateWithoutPaymentMethodInput = {
     id?: string
     amount_cents: number
+    amount_cents_paid?: number | null
     currency: $Enums.Currency
     status: $Enums.PaymentStatus
     transaction_reference?: string | null
@@ -18337,6 +18606,7 @@ export namespace Prisma {
     user_id: string
     subscription_id?: string | null
     amount_cents: number
+    amount_cents_paid?: number | null
     currency: $Enums.Currency
     status: $Enums.PaymentStatus
     transaction_reference?: string | null
@@ -18544,6 +18814,7 @@ export namespace Prisma {
   export type PaymentsCreateWithoutInvoicesInput = {
     id?: string
     amount_cents: number
+    amount_cents_paid?: number | null
     currency: $Enums.Currency
     status: $Enums.PaymentStatus
     transaction_reference?: string | null
@@ -18562,6 +18833,7 @@ export namespace Prisma {
     user_id: string
     subscription_id?: string | null
     amount_cents: number
+    amount_cents_paid?: number | null
     currency: $Enums.Currency
     status: $Enums.PaymentStatus
     payment_method_id: string
@@ -18724,6 +18996,7 @@ export namespace Prisma {
   export type PaymentsUpdateWithoutInvoicesInput = {
     id?: StringFieldUpdateOperationsInput | string
     amount_cents?: IntFieldUpdateOperationsInput | number
+    amount_cents_paid?: NullableIntFieldUpdateOperationsInput | number | null
     currency?: EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
     status?: EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
     transaction_reference?: NullableStringFieldUpdateOperationsInput | string | null
@@ -18742,6 +19015,7 @@ export namespace Prisma {
     user_id?: StringFieldUpdateOperationsInput | string
     subscription_id?: NullableStringFieldUpdateOperationsInput | string | null
     amount_cents?: IntFieldUpdateOperationsInput | number
+    amount_cents_paid?: NullableIntFieldUpdateOperationsInput | number | null
     currency?: EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
     status?: EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
     payment_method_id?: StringFieldUpdateOperationsInput | string
@@ -18772,6 +19046,7 @@ export namespace Prisma {
   export type PaymentsCreateWithoutRefundsInput = {
     id?: string
     amount_cents: number
+    amount_cents_paid?: number | null
     currency: $Enums.Currency
     status: $Enums.PaymentStatus
     transaction_reference?: string | null
@@ -18790,6 +19065,7 @@ export namespace Prisma {
     user_id: string
     subscription_id?: string | null
     amount_cents: number
+    amount_cents_paid?: number | null
     currency: $Enums.Currency
     status: $Enums.PaymentStatus
     payment_method_id: string
@@ -18820,6 +19096,7 @@ export namespace Prisma {
   export type PaymentsUpdateWithoutRefundsInput = {
     id?: StringFieldUpdateOperationsInput | string
     amount_cents?: IntFieldUpdateOperationsInput | number
+    amount_cents_paid?: NullableIntFieldUpdateOperationsInput | number | null
     currency?: EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
     status?: EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
     transaction_reference?: NullableStringFieldUpdateOperationsInput | string | null
@@ -18838,6 +19115,7 @@ export namespace Prisma {
     user_id?: StringFieldUpdateOperationsInput | string
     subscription_id?: NullableStringFieldUpdateOperationsInput | string | null
     amount_cents?: IntFieldUpdateOperationsInput | number
+    amount_cents_paid?: NullableIntFieldUpdateOperationsInput | number | null
     currency?: EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
     status?: EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
     payment_method_id?: StringFieldUpdateOperationsInput | string
@@ -18852,6 +19130,7 @@ export namespace Prisma {
   export type PaymentsCreateWithoutPayment_invoiceInput = {
     id?: string
     amount_cents: number
+    amount_cents_paid?: number | null
     currency: $Enums.Currency
     status: $Enums.PaymentStatus
     transaction_reference?: string | null
@@ -18870,6 +19149,7 @@ export namespace Prisma {
     user_id: string
     subscription_id?: string | null
     amount_cents: number
+    amount_cents_paid?: number | null
     currency: $Enums.Currency
     status: $Enums.PaymentStatus
     payment_method_id: string
@@ -18893,8 +19173,12 @@ export namespace Prisma {
     currency?: $Enums.Currency | null
     due_date?: Date | string | null
     paid_at?: Date | string | null
+    billingStart?: Date | string | null
+    billingEnd?: Date | string | null
     status: $Enums.InvoiceStatus
     invoice_number: string
+    invoiceJobId: string
+    subscriptionJobId?: string | null
     created_at?: Date | string
     updated_at?: Date | string
     user: UsersCreateNestedOneWithoutInvoicesInput
@@ -18912,8 +19196,12 @@ export namespace Prisma {
     currency?: $Enums.Currency | null
     due_date?: Date | string | null
     paid_at?: Date | string | null
+    billingStart?: Date | string | null
+    billingEnd?: Date | string | null
     status: $Enums.InvoiceStatus
     invoice_number: string
+    invoiceJobId: string
+    subscriptionJobId?: string | null
     created_at?: Date | string
     updated_at?: Date | string
   }
@@ -18937,6 +19225,7 @@ export namespace Prisma {
   export type PaymentsUpdateWithoutPayment_invoiceInput = {
     id?: StringFieldUpdateOperationsInput | string
     amount_cents?: IntFieldUpdateOperationsInput | number
+    amount_cents_paid?: NullableIntFieldUpdateOperationsInput | number | null
     currency?: EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
     status?: EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
     transaction_reference?: NullableStringFieldUpdateOperationsInput | string | null
@@ -18955,6 +19244,7 @@ export namespace Prisma {
     user_id?: StringFieldUpdateOperationsInput | string
     subscription_id?: NullableStringFieldUpdateOperationsInput | string | null
     amount_cents?: IntFieldUpdateOperationsInput | number
+    amount_cents_paid?: NullableIntFieldUpdateOperationsInput | number | null
     currency?: EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
     status?: EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
     payment_method_id?: StringFieldUpdateOperationsInput | string
@@ -18984,8 +19274,12 @@ export namespace Prisma {
     currency?: NullableEnumCurrencyFieldUpdateOperationsInput | $Enums.Currency | null
     due_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    billingStart?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    billingEnd?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: EnumInvoiceStatusFieldUpdateOperationsInput | $Enums.InvoiceStatus
     invoice_number?: StringFieldUpdateOperationsInput | string
+    invoiceJobId?: StringFieldUpdateOperationsInput | string
+    subscriptionJobId?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UsersUpdateOneRequiredWithoutInvoicesNestedInput
@@ -19003,8 +19297,12 @@ export namespace Prisma {
     currency?: NullableEnumCurrencyFieldUpdateOperationsInput | $Enums.Currency | null
     due_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    billingStart?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    billingEnd?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: EnumInvoiceStatusFieldUpdateOperationsInput | $Enums.InvoiceStatus
     invoice_number?: StringFieldUpdateOperationsInput | string
+    invoiceJobId?: StringFieldUpdateOperationsInput | string
+    subscriptionJobId?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -19026,6 +19324,7 @@ export namespace Prisma {
     id?: string
     subscription_id?: string | null
     amount_cents: number
+    amount_cents_paid?: number | null
     currency: $Enums.Currency
     status: $Enums.PaymentStatus
     payment_method_id: string
@@ -19042,6 +19341,8 @@ export namespace Prisma {
     last_digits?: number | null
     expiry_month?: number | null
     expiry_year?: number | null
+    authorization_code?: string | null
+    reusable?: boolean
     brand?: $Enums.CardBrand | null
     created_at?: Date | string
     updated_at?: Date | string
@@ -19056,8 +19357,12 @@ export namespace Prisma {
     currency?: $Enums.Currency | null
     due_date?: Date | string | null
     paid_at?: Date | string | null
+    billingStart?: Date | string | null
+    billingEnd?: Date | string | null
     status: $Enums.InvoiceStatus
     invoice_number: string
+    invoiceJobId: string
+    subscriptionJobId?: string | null
     created_at?: Date | string
     updated_at?: Date | string
   }
@@ -19108,6 +19413,7 @@ export namespace Prisma {
   export type PaymentsUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     amount_cents?: IntFieldUpdateOperationsInput | number
+    amount_cents_paid?: NullableIntFieldUpdateOperationsInput | number | null
     currency?: EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
     status?: EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
     transaction_reference?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19125,6 +19431,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     subscription_id?: NullableStringFieldUpdateOperationsInput | string | null
     amount_cents?: IntFieldUpdateOperationsInput | number
+    amount_cents_paid?: NullableIntFieldUpdateOperationsInput | number | null
     currency?: EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
     status?: EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
     payment_method_id?: StringFieldUpdateOperationsInput | string
@@ -19141,6 +19448,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     subscription_id?: NullableStringFieldUpdateOperationsInput | string | null
     amount_cents?: IntFieldUpdateOperationsInput | number
+    amount_cents_paid?: NullableIntFieldUpdateOperationsInput | number | null
     currency?: EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
     status?: EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
     payment_method_id?: StringFieldUpdateOperationsInput | string
@@ -19157,6 +19465,8 @@ export namespace Prisma {
     last_digits?: NullableIntFieldUpdateOperationsInput | number | null
     expiry_month?: NullableIntFieldUpdateOperationsInput | number | null
     expiry_year?: NullableIntFieldUpdateOperationsInput | number | null
+    authorization_code?: NullableStringFieldUpdateOperationsInput | string | null
+    reusable?: BoolFieldUpdateOperationsInput | boolean
     brand?: NullableEnumCardBrandFieldUpdateOperationsInput | $Enums.CardBrand | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -19170,6 +19480,8 @@ export namespace Prisma {
     last_digits?: NullableIntFieldUpdateOperationsInput | number | null
     expiry_month?: NullableIntFieldUpdateOperationsInput | number | null
     expiry_year?: NullableIntFieldUpdateOperationsInput | number | null
+    authorization_code?: NullableStringFieldUpdateOperationsInput | string | null
+    reusable?: BoolFieldUpdateOperationsInput | boolean
     brand?: NullableEnumCardBrandFieldUpdateOperationsInput | $Enums.CardBrand | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -19183,6 +19495,8 @@ export namespace Prisma {
     last_digits?: NullableIntFieldUpdateOperationsInput | number | null
     expiry_month?: NullableIntFieldUpdateOperationsInput | number | null
     expiry_year?: NullableIntFieldUpdateOperationsInput | number | null
+    authorization_code?: NullableStringFieldUpdateOperationsInput | string | null
+    reusable?: BoolFieldUpdateOperationsInput | boolean
     brand?: NullableEnumCardBrandFieldUpdateOperationsInput | $Enums.CardBrand | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -19195,8 +19509,12 @@ export namespace Prisma {
     currency?: NullableEnumCurrencyFieldUpdateOperationsInput | $Enums.Currency | null
     due_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    billingStart?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    billingEnd?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: EnumInvoiceStatusFieldUpdateOperationsInput | $Enums.InvoiceStatus
     invoice_number?: StringFieldUpdateOperationsInput | string
+    invoiceJobId?: StringFieldUpdateOperationsInput | string
+    subscriptionJobId?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     subscription?: SubscriptionsUpdateOneRequiredWithoutInvoicesNestedInput
@@ -19213,8 +19531,12 @@ export namespace Prisma {
     currency?: NullableEnumCurrencyFieldUpdateOperationsInput | $Enums.Currency | null
     due_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    billingStart?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    billingEnd?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: EnumInvoiceStatusFieldUpdateOperationsInput | $Enums.InvoiceStatus
     invoice_number?: StringFieldUpdateOperationsInput | string
+    invoiceJobId?: StringFieldUpdateOperationsInput | string
+    subscriptionJobId?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     payment_invoice?: payment_invoiceUncheckedUpdateManyWithoutInvoiceNestedInput
@@ -19229,8 +19551,12 @@ export namespace Prisma {
     currency?: NullableEnumCurrencyFieldUpdateOperationsInput | $Enums.Currency | null
     due_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    billingStart?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    billingEnd?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: EnumInvoiceStatusFieldUpdateOperationsInput | $Enums.InvoiceStatus
     invoice_number?: StringFieldUpdateOperationsInput | string
+    invoiceJobId?: StringFieldUpdateOperationsInput | string
+    subscriptionJobId?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -19295,6 +19621,7 @@ export namespace Prisma {
     id?: string
     user_id: string
     amount_cents: number
+    amount_cents_paid?: number | null
     currency: $Enums.Currency
     status: $Enums.PaymentStatus
     payment_method_id: string
@@ -19313,8 +19640,12 @@ export namespace Prisma {
     currency?: $Enums.Currency | null
     due_date?: Date | string | null
     paid_at?: Date | string | null
+    billingStart?: Date | string | null
+    billingEnd?: Date | string | null
     status: $Enums.InvoiceStatus
     invoice_number: string
+    invoiceJobId: string
+    subscriptionJobId?: string | null
     created_at?: Date | string
     updated_at?: Date | string
   }
@@ -19322,6 +19653,7 @@ export namespace Prisma {
   export type PaymentsUpdateWithoutSubscriptionInput = {
     id?: StringFieldUpdateOperationsInput | string
     amount_cents?: IntFieldUpdateOperationsInput | number
+    amount_cents_paid?: NullableIntFieldUpdateOperationsInput | number | null
     currency?: EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
     status?: EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
     transaction_reference?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19339,6 +19671,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     user_id?: StringFieldUpdateOperationsInput | string
     amount_cents?: IntFieldUpdateOperationsInput | number
+    amount_cents_paid?: NullableIntFieldUpdateOperationsInput | number | null
     currency?: EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
     status?: EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
     payment_method_id?: StringFieldUpdateOperationsInput | string
@@ -19355,6 +19688,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     user_id?: StringFieldUpdateOperationsInput | string
     amount_cents?: IntFieldUpdateOperationsInput | number
+    amount_cents_paid?: NullableIntFieldUpdateOperationsInput | number | null
     currency?: EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
     status?: EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
     payment_method_id?: StringFieldUpdateOperationsInput | string
@@ -19371,8 +19705,12 @@ export namespace Prisma {
     currency?: NullableEnumCurrencyFieldUpdateOperationsInput | $Enums.Currency | null
     due_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    billingStart?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    billingEnd?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: EnumInvoiceStatusFieldUpdateOperationsInput | $Enums.InvoiceStatus
     invoice_number?: StringFieldUpdateOperationsInput | string
+    invoiceJobId?: StringFieldUpdateOperationsInput | string
+    subscriptionJobId?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UsersUpdateOneRequiredWithoutInvoicesNestedInput
@@ -19389,8 +19727,12 @@ export namespace Prisma {
     currency?: NullableEnumCurrencyFieldUpdateOperationsInput | $Enums.Currency | null
     due_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    billingStart?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    billingEnd?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: EnumInvoiceStatusFieldUpdateOperationsInput | $Enums.InvoiceStatus
     invoice_number?: StringFieldUpdateOperationsInput | string
+    invoiceJobId?: StringFieldUpdateOperationsInput | string
+    subscriptionJobId?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     payment_invoice?: payment_invoiceUncheckedUpdateManyWithoutInvoiceNestedInput
@@ -19405,8 +19747,12 @@ export namespace Prisma {
     currency?: NullableEnumCurrencyFieldUpdateOperationsInput | $Enums.Currency | null
     due_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    billingStart?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    billingEnd?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: EnumInvoiceStatusFieldUpdateOperationsInput | $Enums.InvoiceStatus
     invoice_number?: StringFieldUpdateOperationsInput | string
+    invoiceJobId?: StringFieldUpdateOperationsInput | string
+    subscriptionJobId?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -19438,8 +19784,12 @@ export namespace Prisma {
     currency?: $Enums.Currency | null
     due_date?: Date | string | null
     paid_at?: Date | string | null
+    billingStart?: Date | string | null
+    billingEnd?: Date | string | null
     status: $Enums.InvoiceStatus
     invoice_number: string
+    invoiceJobId: string
+    subscriptionJobId?: string | null
     created_at?: Date | string
     updated_at?: Date | string
   }
@@ -19505,8 +19855,12 @@ export namespace Prisma {
     currency?: NullableEnumCurrencyFieldUpdateOperationsInput | $Enums.Currency | null
     due_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    billingStart?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    billingEnd?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: EnumInvoiceStatusFieldUpdateOperationsInput | $Enums.InvoiceStatus
     invoice_number?: StringFieldUpdateOperationsInput | string
+    invoiceJobId?: StringFieldUpdateOperationsInput | string
+    subscriptionJobId?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UsersUpdateOneRequiredWithoutInvoicesNestedInput
@@ -19523,8 +19877,12 @@ export namespace Prisma {
     currency?: NullableEnumCurrencyFieldUpdateOperationsInput | $Enums.Currency | null
     due_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    billingStart?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    billingEnd?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: EnumInvoiceStatusFieldUpdateOperationsInput | $Enums.InvoiceStatus
     invoice_number?: StringFieldUpdateOperationsInput | string
+    invoiceJobId?: StringFieldUpdateOperationsInput | string
+    subscriptionJobId?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     payment_invoice?: payment_invoiceUncheckedUpdateManyWithoutInvoiceNestedInput
@@ -19539,8 +19897,12 @@ export namespace Prisma {
     currency?: NullableEnumCurrencyFieldUpdateOperationsInput | $Enums.Currency | null
     due_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     paid_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    billingStart?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    billingEnd?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: EnumInvoiceStatusFieldUpdateOperationsInput | $Enums.InvoiceStatus
     invoice_number?: StringFieldUpdateOperationsInput | string
+    invoiceJobId?: StringFieldUpdateOperationsInput | string
+    subscriptionJobId?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -19550,6 +19912,7 @@ export namespace Prisma {
     user_id: string
     subscription_id?: string | null
     amount_cents: number
+    amount_cents_paid?: number | null
     currency: $Enums.Currency
     status: $Enums.PaymentStatus
     transaction_reference?: string | null
@@ -19561,6 +19924,7 @@ export namespace Prisma {
   export type PaymentsUpdateWithoutPaymentMethodInput = {
     id?: StringFieldUpdateOperationsInput | string
     amount_cents?: IntFieldUpdateOperationsInput | number
+    amount_cents_paid?: NullableIntFieldUpdateOperationsInput | number | null
     currency?: EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
     status?: EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
     transaction_reference?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19579,6 +19943,7 @@ export namespace Prisma {
     user_id?: StringFieldUpdateOperationsInput | string
     subscription_id?: NullableStringFieldUpdateOperationsInput | string | null
     amount_cents?: IntFieldUpdateOperationsInput | number
+    amount_cents_paid?: NullableIntFieldUpdateOperationsInput | number | null
     currency?: EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
     status?: EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
     transaction_reference?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19595,6 +19960,7 @@ export namespace Prisma {
     user_id?: StringFieldUpdateOperationsInput | string
     subscription_id?: NullableStringFieldUpdateOperationsInput | string | null
     amount_cents?: IntFieldUpdateOperationsInput | number
+    amount_cents_paid?: NullableIntFieldUpdateOperationsInput | number | null
     currency?: EnumCurrencyFieldUpdateOperationsInput | $Enums.Currency
     status?: EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
     transaction_reference?: NullableStringFieldUpdateOperationsInput | string | null

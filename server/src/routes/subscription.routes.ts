@@ -7,7 +7,7 @@ const subscription = Router();
 
 subscription.get("/", getAllSubscription)
 subscription.get("/:id", getUserSubscription)
-subscription.post("/", createSubscription)
+subscription.post("/subscribe", createSubscription)
 // subscription.put("/:id", )//understand how put works well
 subscription.delete("/:id", deleteUserSubscriptions)
 // subscription.get("/user/:id", )//understand how this would even work 

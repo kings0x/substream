@@ -178,6 +178,7 @@ exports.Prisma.PaymentsScalarFieldEnum = {
   user_id: 'user_id',
   subscription_id: 'subscription_id',
   amount_cents: 'amount_cents',
+  amount_cents_paid: 'amount_cents_paid',
   currency: 'currency',
   status: 'status',
   payment_method_id: 'payment_method_id',
@@ -195,6 +196,8 @@ exports.Prisma.PaymentMethodsScalarFieldEnum = {
   last_digits: 'last_digits',
   expiry_month: 'expiry_month',
   expiry_year: 'expiry_year',
+  authorization_code: 'authorization_code',
+  reusable: 'reusable',
   brand: 'brand',
   created_at: 'created_at',
   updated_at: 'updated_at'
@@ -210,8 +213,12 @@ exports.Prisma.InvoicesScalarFieldEnum = {
   currency: 'currency',
   due_date: 'due_date',
   paid_at: 'paid_at',
+  billingStart: 'billingStart',
+  billingEnd: 'billingEnd',
   status: 'status',
   invoice_number: 'invoice_number',
+  invoiceJobId: 'invoiceJobId',
+  subscriptionJobId: 'subscriptionJobId',
   created_at: 'created_at',
   updated_at: 'updated_at'
 };

@@ -73,7 +73,8 @@ const envSchema = z.object({
     REDIS_PASSWORD: z.string(),
     MAIL_QUEUE_NAME: z.string(),
     STRIPE_SECRET_KEY: z.string(),
-    PAYSTACK_SECRET_KEY: z.string()
+    PAYSTACK_SECRET_KEY: z.string(),
+    SUBSCRIPTION_QUEUE_NAME: z.string(),
 });
 
 const parsedEnvSchema = envSchema.safeParse(process.env);
@@ -101,5 +102,6 @@ export const {
     REDIS_PASSWORD, 
     MAIL_QUEUE_NAME, 
     STRIPE_SECRET_KEY,
-    PAYSTACK_SECRET_KEY
+    PAYSTACK_SECRET_KEY,
+    SUBSCRIPTION_QUEUE_NAME
 } = parsedEnvSchema.data;

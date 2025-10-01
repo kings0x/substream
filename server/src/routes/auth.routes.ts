@@ -8,9 +8,9 @@ authRoutes.post("/signup", signup)
 authRoutes.post("/verifycode", verifyCode)
 authRoutes.post("/resendcode", renewCode)
 authRoutes.post("/refreshtoken", refreshAccessToken)
-authRoutes.post("login", login)
+authRoutes.post("/login", login)
 authRoutes.post("/forgot-password", forgotPassword)
-authRoutes.post("logout", logout)
+authRoutes.post("/logout", logout)
 
 //google OAUTH
 authRoutes.get("/google", passport.authenticate("google", { scope: ["profile", "email"] }))
